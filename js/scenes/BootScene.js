@@ -1,4 +1,3 @@
-// js/scenes/BootScene.js
 class BootScene extends Phaser.Scene {
   constructor() {
     super('BootScene');
@@ -16,6 +15,7 @@ class BootScene extends Phaser.Scene {
     }).setOrigin(0.5);
 
     this.time.delayedCall(1000, () => {
+      console.log('BootScene finished loading, switching to GameScene...');
       this.scene.start('GameScene');
     });
   }
