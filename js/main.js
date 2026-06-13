@@ -1,3 +1,4 @@
+// js/main.js
 const config = {
   type: Phaser.AUTO,
   width: 1280,
