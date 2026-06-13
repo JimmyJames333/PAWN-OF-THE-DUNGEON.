@@ -1,12 +1,21 @@
 class MapGenerator {
-    constructor(scene) {
-        this.scene = scene;
+  constructor(scene) {
+    this.scene = scene;
+  }
+
+  createMap() {
+    const { width, height } = this.scene.scale;
+    const graphics = this.scene.add.graphics();
+    graphics.fillStyle(0x444444, 1);
+
+    // Draw a simple grid
+    const tileSize = 64;
+    for (let x = 0; x < width; x += tileSize) {
+      for (let y = 0; y < height; y += tileSize) {
+        graphics.fillRect(x, y, tileSize - 2, tileSize - 2);
+      }
     }
 
-    generateDungeon() {
-        this.scene.add.text(480, 40, "Dungeon Loaded", {
-            fontSize: "32px",
-            fill: "#ffffff"
-        });
-    }
+    console.log('Map generated successfully.');
+  }
 }
