@@ -7,7 +7,7 @@ class GameScene extends Phaser.Scene {
     const { width, height } = this.scale;
     this.add.text(width / 2, height / 2, 'Game Started!', {
       fontSize: '32px',
-      color: '#00ff00'
+      color: '#00ff00' // ✅ Correct hex code
     }).setOrigin(0.5);
   }
 }
