@@ -12,25 +12,32 @@ class CharacterSelectScene extends Phaser.Scene {
     }).setOrigin(0.5);
 
     const characters = [
-      { name: 'Warrior', color: '#ff4444' },
-      { name: 'Mage', color: '#44aaff' },
-      { name: 'Rogue', color: '#44ff44' }
+      { name: 'Warrior', color: 0xff4444 },
+      { name: 'Mage', color: 0x44aaff },
+      { name: 'Rogue', color: 0x44ff44 }
     ];
 
-    characters.forEach((char, i) => {
-      const y = 250 + i * 100;
-      const text = this.add.text(width / 2, y, char.name, {
-        fontSize: '32px',
-        color: char.color
-      }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+    const spacing = 300;
+    const startX = width / 2 - spacing;
 
-      text.on('pointerover', () => text.setStyle({ fontSize: '36px' }));
-      text.on('pointerout', () => text.setStyle({ fontSize: '32px' }));
-      text.on('pointerdown', () => {
+    characters.forEach((char, i) => {
+      const x = startX + i * spacing;
+      const y = height / 2;
+
+      // Draw a colored circle as a placeholder
+      const circle = this.add.circle(x, y, 60, char.color).setInteractive({ useHandCursor: true });
+
+      circle.on('pointerover', () => circle.setScale(1.2));
+      circle.on('pointerout', () => circle.setScale(1));
+      circle.on('pointerdown', () => {
         this.registry.set('selectedCharacter', char.name);
-        console.log('Selected character:', char.name);
         this.scene.start('GameScene');
       });
+
+      this.add.text(x, y + 100, char.name, {
+        fontSize: '24px',
+        color: '#ffffff'
+      }).setOrigin(0.5);
     });
   }
 }
