@@ -1,29 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pawn of the Dungeon</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      overflow: hidden;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Pawn of the Dungeon</title>
+    <style>
+        body {
+            margin: 0;
+            background: black;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-  <!-- Phaser Engine -->
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.js"></script>
 
-  <!-- Game Files -->
-  <script defer src="js/map/MapGenerator.js"></script>
-  <script defer src="js/scenes/BootScene.js"></script>
-  <script defer src="js/scenes/CharacterSelectScene.js"></script>
-  <script defer src="js/scenes/GameScene.js"></script>
-  <script defer src="js/scenes/UIScene.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.js"></script>
+<script src="BootScene.js"></script>
+<script src="CharacterSelectScene.js"></script>
+<script src="GameScene.js"></script>
+<script src="UIScene.js"></script>
+<script src="main.js"></script>
 
-  <!-- Main Entry -->
-  <script defer src="js/main.js"></script>
 </body>
 </html>
