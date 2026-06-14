@@ -1,26 +1,24 @@
 class GameScene extends Phaser.Scene {
-  constructor() {
-    super('GameScene');
-  }
+    constructor() {
+        super("GameScene");
+    }
 
-  create() {
-    const chosen = this.registry.get('selectedCharacter') || 'Warrior';
-    const { width, height } = this.scale;
+    create(data) {
+        this.player = this.physics.add.sprite(640, 360, data.piece);
+        this.player.setScale(2);
 
-    this.map = new MapGenerator(this);
-    this.map.createMap();
+        this.cursors = this.input.keyboard.createCursorKeys();
 
-    // Show a colored circle for the chosen character
-    const colorMap = {
-      Warrior: 0xff4444,
-      Mage: 0x44aaff,
-      Rogue: 0x44ff44
-    };
+        this.scene.launch("UIScene");
+    }
 
-    this.add.circle(width / 2, height / 2, 60, colorMap[chosen]);
-    this.add.text(width / 2, height / 2 + 120, `You chose: ${chosen}`, {
-      fontSize: '28px',
-      color: '#00ff00'
-    }).setOrigin(0.5);
-  }
+    update() {
+        const speed = 200;
+        this.player.setVelocity(0);
+
+        if (this.cursors.left.isDown) this.player.setVelocityX(-speed);
+        if (this.cursors.right.isDown) this.player.setVelocityX(speed);
+        if (this.cursors.up.isDown) this.player.setVelocityY(-speed);
+        if (this.cursors.down.isDown) this.player.setVelocityY(speed);
+    }
 }
